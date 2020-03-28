@@ -5,7 +5,8 @@ module.exports = {
         const { id } = request.params;
         const ong = await connection('ongs')
             .where('id', id)
-            .select('*');
+            .select('*')
+            .first();
 
         if (!ong) {
             return response.status(400).json({ error: 'user dont found' });
